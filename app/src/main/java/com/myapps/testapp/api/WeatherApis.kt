@@ -16,7 +16,7 @@ interface WeatherApis {
         @Query("q") cityName:String
     ):CurrentWeatherResponse
 
-   @GET("onecall?exclude=minutely,alerts&appid=bc479749033681ec553da14282a1e425&units=metric")
+   @GET("onecall?exclude=minutely,alerts&appid=$API_KEY&units=metric")
     suspend fun  getWholeWeatherForecast(
        @Query("lat") lat :Double,
        @Query("lon") lon :Double
