@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:context=".ui.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/currentWeatherImg"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/currentTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:fontFamily="sans-serif-condensed"
+            app:layout_constraintEnd_toStartOf="@+id/currentWeatherImg"
+            app:layout_constraintHorizontal_bias="0.452"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/currentWeatherImg" />
+
+        <TextView
+            android:id="@+id/minAndMaxTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/secondaryTextColor"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/currentTemp"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="@+id/currentTemp"
+            app:layout_constraintTop_toBottomOf="@+id/currentTemp" />
+
+        <LinearLayout
+            android:id="@+id/selected_city"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/city_btn_bg"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/currentWeatherImg"
+            app:layout_constraintEnd_toEndOf="@+id/minAndMaxTemp"
+            app:layout_constraintStart_toStartOf="@+id/minAndMaxTemp"
+            app:layout_constraintTop_toBottomOf="@+id/minAndMaxTemp"
+            app:layout_constraintVertical_bias="0.154">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_location_on" />
+
+            <TextView
+                android:id="@+id/selected_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tabriz"
+                android:textColor="@color/primaryTextColor" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hourly_weather_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingStart="6dp"
+            android:paddingEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentWeatherImg"
+            tools:listitem="@layout/hourly_weather_forcast_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daily_weather_recycler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hourly_weather_recycler_view"
+            tools:listitem="@layout/daily_weather_forcast_item" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/Loading"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/daily_weather_recycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currentWeatherImg"
+            app:layout_constraintVertical_bias="0.026"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/weather_day_few_clouds" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/no_connection"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:visibility="invisible"
+
+            app:layout_constraintBottom_toBottomOf="@+id/daily_weather_recycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currentWeatherImg"
+            app:layout_constraintVertical_bias="0.026"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/no_connection" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
